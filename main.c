@@ -216,7 +216,6 @@ both regions.
 
 #define KEYCODE_MOD_LEFT_SHIFT	0x02
 #define KEYCODE_A				0x04
-#define KEYCODE_B				0x05
 
 // construct a keyboard report, follow the standard format as described
 // this format is compatible with "boot protocol"
@@ -234,15 +233,11 @@ void pressKey(uint8_t modifiers, uint8_t keycode1) {
 
 int main() {
 	usbBegin();
-    //wdt_enable(WDTO_1S); // enable 1s watchdog timer
-   	//DDRB |= _BV(LED_PIN); // LED
 	PORTB |= _BV(PB0); // Pullup on button
 
     while(1) {
-        //wdt_reset(); // keep the watchdog happy
         usbPoll();
 
-        //PINB |= _BV(PB1); // blink
 		if(!(PINB & _BV(PB0))) { // button pressed
             pressKey(KEYCODE_MOD_LEFT_SHIFT, KEYCODE_A); // press
             pressKey(0, 0); // release
