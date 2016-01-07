@@ -244,7 +244,7 @@ int main() {
 
         //PINB |= _BV(PB1); // blink
 		if(!(PINB & _BV(PB0))) { // button pressed
-            pressKey(KEYCODE_MOD_LEFT_SHIFT, KEYCODE_B); // press
+            pressKey(KEYCODE_MOD_LEFT_SHIFT, KEYCODE_A); // press
             pressKey(0, 0); // release
         }
     }
